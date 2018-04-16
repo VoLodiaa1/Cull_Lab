@@ -6,7 +6,7 @@ public class PositionnementObjet : MonoBehaviour {
 
 	//Public
 	public Camera MyCamera;
-	public Material Ghostmaterial;
+	//public Material Ghostmaterial;
 	public GameObject ObjectSelectionner;
 	public GameObject ImageRotation;
 	public float VitesseRotationObject = 1;
@@ -28,7 +28,7 @@ public class PositionnementObjet : MonoBehaviour {
 	public bool impossiblePosition = false;
 	[HideInInspector]public Rigidbody rb;
 
-	[HideInInspector] public Material Basematerial;
+	//[HideInInspector] public Material Basematerial;
 
 	// Use this for initialization
 	void Start () {
@@ -58,7 +58,7 @@ public class PositionnementObjet : MonoBehaviour {
 			ObjectSelectionner.GetComponent<SphereCollider> ().enabled = false;
 			ObjectSelectionner.GetComponent<BoxCollider> ().enabled = true;
 			print ("fuck");
-			ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
+			//ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
 			ObjectSelectionner.layer = 0;
 			ObjectSelectionner = null;
 			rb.useGravity = true;
@@ -69,19 +69,19 @@ public class PositionnementObjet : MonoBehaviour {
 		}
 			
 		//INSTANCIATE ROTATION
-		if (RotationDone == true && ModeRotation == true) {
+		/*if (RotationDone == true && ModeRotation == true) {
 			print ("mondieu");
 			Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
 			Instantiate (ImageRotation, new Vector3 (ObjectSelectionner.transform.position.x, ObjectSelectionner.transform.position.y, ObjectSelectionner.transform.position.z),
 						new Quaternion (0,0,0,0));
 			RotationDone = false;
 			PeutChangerDeMode = true;
-		}
+		}*/
 
 		//MAKETHEROTATION
-		if (RotationToMakeObjectX != 0 || RotationToMakeObjectY != 0 || RotationToMakeObjectZ != 0) {
+		/*if (RotationToMakeObjectX != 0 || RotationToMakeObjectY != 0 || RotationToMakeObjectZ != 0) {
 			RotationObject ();
-		}
+		}*/
 
 
 		if (oneframe == true) {
@@ -99,18 +99,18 @@ public class PositionnementObjet : MonoBehaviour {
 		if (Physics.Raycast (ray, out hit)) {
 			if (hit.transform.tag == "ObjetBougeable" && ObjectController == false && oneframe == false) {
 				if (Input.GetKeyDown (KeyCode.Mouse0)) { 
-					if (ModeRotation == false) {
+					/*if (ModeRotation == false) {*/
 						print ("bugpas");
 						ObjectSelectionner = hit.transform.gameObject;
 						if (ObjectSelectionner.GetComponent<Rigidbody> () != null) {
 							rb = ObjectSelectionner.GetComponent<Rigidbody> ();
 							rb.useGravity = false;
-						}
+						//}
 						if (rb.velocity.magnitude == 0) {
 							PositionY = ObjectSelectionner.transform.position.y;
 							PositionObject = new Vector3 (hit.transform.position.x, hit.transform.position.y, hit.transform.position.z);
 							ObjectSelectionner.layer = 2;
-							Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
+							//Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
 							ObjectController = true;
 							oneframe = true;
 							print ("pute");
@@ -120,7 +120,7 @@ public class PositionnementObjet : MonoBehaviour {
 						}
 					}
 				}
-				if (Input.GetKeyDown (KeyCode.Mouse1) ) {
+				/*if (Input.GetKeyDown (KeyCode.Mouse1) ) {
 					ObjectSelectionner = hit.transform.gameObject;
 					Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
 					if (ObjectSelectionner.GetComponent<Rigidbody> () != null) {
@@ -145,9 +145,9 @@ public class PositionnementObjet : MonoBehaviour {
 						oneframe = true;
 						Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
 					}
-				}
+				}*/
 			}
-			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+			/*if (Input.GetKeyDown (KeyCode.Mouse0)) {
 				if (hit.transform.name == "Yaw" && oneframe == false) {
 					RotationToMakeObjectY -= 90;
 					oneframe = true;
@@ -160,10 +160,10 @@ public class PositionnementObjet : MonoBehaviour {
 					RotationToMakeObjectZ += 90;
 					oneframe = true;
 				}
-			}
+			}*/
 		}
 
-		if (Input.GetKeyDown (KeyCode.Mouse1) && ModeRotation == true && RotationDone == false && oneframe == false) {
+		/*if (Input.GetKeyDown (KeyCode.Mouse1) && ModeRotation == true && RotationDone == false && oneframe == false) {
 			if (RotationToMakeObjectX == 0 && RotationToMakeObjectY == 0 && RotationToMakeObjectZ == 0) {
 				print ("oui");
 				ObjectSelectionner.layer = 0;
@@ -174,9 +174,9 @@ public class PositionnementObjet : MonoBehaviour {
 				oneframe = true;
 				ModeRotation = false;
 			}
-		}
+		}*/
 
-		if (ObjectController == true && oneframe == false && ModeRotation == false) {
+		if (ObjectController == true && oneframe == false /*&& ModeRotation == false*/) {
 			ApparitionObjet ();
 		}
 
@@ -200,7 +200,7 @@ public class PositionnementObjet : MonoBehaviour {
 	void ApparitionObjet () {
 		ObjectSelectionner.GetComponent<SphereCollider> ().enabled = true; 
 		ObjectSelectionner.GetComponent<BoxCollider> ().enabled = false;
-		ObjectSelectionner.GetComponent<Renderer>().material = Ghostmaterial;
+		//ObjectSelectionner.GetComponent<Renderer>().material = Ghostmaterial;
 		RaycastHit hit;
 		Ray ray	= MyCamera.ScreenPointToRay (Input.mousePosition);
 		if (Physics.Raycast (ray, out hit)) {
@@ -213,7 +213,7 @@ public class PositionnementObjet : MonoBehaviour {
 			ObjectSelectionner.GetComponent<SphereCollider> ().enabled = false; 
 			ObjectSelectionner.GetComponent<BoxCollider> ().enabled = true;
 			print ("fuck");
-			ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
+			//ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
 			ObjectSelectionner.layer = 0;
 			ObjectSelectionner = null;
 			rb.useGravity = true;
@@ -225,7 +225,7 @@ public class PositionnementObjet : MonoBehaviour {
 
 	}
 
-	void RotationObject () {
+	/*void RotationObject () {
 
 		// ROTATION Y
 		if (RotationToMakeObjectY > 0) {
@@ -298,7 +298,7 @@ public class PositionnementObjet : MonoBehaviour {
 			RotationDone = true;
 			print ("shit");
 		}
-	}
+	}*/
 
 
 
