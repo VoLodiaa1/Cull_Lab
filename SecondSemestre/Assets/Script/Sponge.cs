@@ -6,7 +6,7 @@ public class Sponge : MonoBehaviour {
 
 	public GameObject MaSalle;
 
-	bool objectSelected = false;
+	public bool objectSelected = false;
 	public Rigidbody rb;
 	int NumeroSeringe;
 	float timer;
@@ -20,7 +20,7 @@ public class Sponge : MonoBehaviour {
 	Color Macolor;
 	public float h,s,v;
 	public float Hpourcent, Spourcent, Vpourcent;
-	bool premierepenetration = true;
+	public bool premierepenetration = true;
 
 
 	// Use this for initialization
@@ -97,60 +97,76 @@ public class Sponge : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionStay (Collision col) {
-		if (col.gameObject.name == "Sponge" && objectSelected == false) {
-			print ("1er step");
-			if (premierepenetration == true) {
-				if (s < 1) {
-					Scol = col.gameObject.GetComponent<Sponge> ().v*0.1f;
-				} else {
-					Scol = 0;
-				}
-				if (h != 0) {
-					Hcol = -col.gameObject.GetComponent<Sponge> ().h*0.1f;
-				} else {
-					Hcol = col.gameObject.GetComponent<Sponge> ().h*0.1f;
-				}
-				premierepenetration = false;
-			}
-			Rigidbody rbcol	= col.gameObject.GetComponent<Rigidbody> ();
-
-			if (gameObject.transform.position.y > col.gameObject.transform.position.y && rb.velocity.magnitude == 0 && rbcol.velocity.magnitude == 0) {
-				if (gameObject.transform.position.x == col.gameObject.transform.position.x && gameObject.transform.position.z == col.gameObject.transform.position.z) {
-					print ("pasbouger");
-					if (h == 0 || Hcol == 0) {
-						h -= Hpourcent;
-						col.gameObject.GetComponent<Sponge> ().h = 0;
-						s -= Spourcent;
-						col.gameObject.GetComponent<Sponge> ().s = 0;
-						Afusionner = true;
-						if (h == 0 && Hcol == 0) {
-
-						} else {
-							Destroy (this.gameObject);
-						}
-					} else {
-						print ("colorisation");
-						timerColor += Time.deltaTime;
-						if (timerColor > 0.1f && compteur10 < 10) {
-							print ("timercolor2");
-							s += Scol;
-							h += Hcol;
-							Afusionner = true;
-							compteur10 += 1;
-							timerColor = 0;
-						}
-						if (compteur10 == 10) {
-							print ("tombe");
-							this.GetComponent<BoxCollider> ().enabled = false;
-							premierepenetration = true;
-							compteur10 = 0;
-						}
-					}
-
-				}
-			}
+	void OnCollisionStay (Collision other) {
+		if (other.gameObject.name == "Sponge" && objectSelected == false) {
+			print ("first step");
 		}
 	}
+
+
+
+
+
+
+
+
+
+//	void OnCollisionStay (Collision col) {
+//		if (col.gameObject.name == "Sponge" && objectSelected == false) {
+//			print ("1er step");
+//			/*if (premierepenetration == true) {
+//				if (s < 1) {
+//					Scol = col.gameObject.GetComponent<Sponge> ().v*0.1f;
+//				} else {
+//					Scol = 0;
+//				}
+//				if (h != 0) {
+//					Hcol = -col.gameObject.GetComponent<Sponge> ().h*0.1f;
+//				} else {
+//					Hcol = col.gameObject.GetComponent<Sponge> ().h*0.1f;
+//				}
+//				premierepenetration = false;
+//				print ("bugger");
+//			}*/
+//			Rigidbody rbcol	= col.gameObject.GetComponent<Rigidbody> ();
+//
+//			if (gameObject.transform.position.y > col.gameObject.transform.position.y && rb.velocity.magnitude == 0 && rbcol.velocity.magnitude == 0) {
+//				print ("azerftaze");
+//				if (gameObject.transform.position.x == col.gameObject.transform.position.x && gameObject.transform.position.z == col.gameObject.transform.position.z) {
+//					print ("pasbouger");
+//					if (h == 0 || Hcol == 0) {
+//						h -= Hpourcent;
+//						col.gameObject.GetComponent<Sponge> ().h = 0;
+//						s -= Spourcent;
+//						col.gameObject.GetComponent<Sponge> ().s = 0;
+//						Afusionner = true;
+//						if (h == 0 && Hcol == 0) {
+//
+//						} else {
+//							Destroy (this.gameObject);
+//						}
+//					} else {
+//						print ("colorisation");
+//						timerColor += Time.deltaTime;
+//						if (timerColor > 0.1f && compteur10 < 10) {
+//							print ("timercolor2");
+//							s += Scol;
+//							h += Hcol;
+//							Afusionner = true;
+//							compteur10 += 1;
+//							timerColor = 0;
+//						}
+//						if (compteur10 == 10) {
+//							print ("tombe");
+//							this.GetComponent<BoxCollider> ().enabled = false;
+//							premierepenetration = true;
+//							compteur10 = 0;
+//						}
+//					}
+//
+//				}
+//			}
+//		}
+//	}
 
 }

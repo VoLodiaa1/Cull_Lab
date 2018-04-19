@@ -2,14 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Sponge.cs">
     <Files>
-      <File FileName="Assets\Script\PositionnementObjet.cs" Line="197" Column="53" />
-      <File FileName="Assets\Script\RotationSalle.cs" Line="61" Column="121" />
+      <File FileName="Assets\Script\PositionnementObjet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\RotationSalle.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\DestructionImageRotation.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\PenetrationSol.cs" Line="15" Column="31" />
       <File FileName="Assets\Script\ColorationCase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Desactivation.cs" Line="46" Column="118" />
-      <File FileName="Assets\Script\Sponge.cs" Line="101" Column="33" />
-      <File FileName="Assets\Script\Seringe.cs" Line="18" Column="18" />
+      <File FileName="Assets\Script\Desactivation.cs" Line="47" Column="25" />
+      <File FileName="Assets\Script\Sponge.cs" Line="103" Column="4" />
+      <File FileName="Assets\Script\Seringe.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\ResetDeScene.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
