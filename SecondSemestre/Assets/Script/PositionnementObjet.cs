@@ -54,19 +54,19 @@ public class PositionnementObjet : MonoBehaviour {
 		// REPLACEMENT HAUT DE PILE
 		if (impossiblePosition == true && Input.GetKeyUp(KeyCode.Mouse0)) {
 			ObjectSelectionner.transform.position = PositionObject;
-			for (int i = 0; i < ObjectInScene.Length; i++) {
-				if (ObjectInScene [i] != ObjectSelectionner) {
-					print (i);
-					if (ObjectInScene [i].transform.position.x < ObjectSelectionner.transform.position.x + 0.1f && ObjectInScene [i].transform.position.y < ObjectSelectionner.transform.position.y + 0.1f
-					    && ObjectInScene [i].transform.position.z < ObjectSelectionner.transform.position.z + 0.1f && ObjectInScene [i].transform.position.x > ObjectSelectionner.transform.position.x - 0.1f
-						&& ObjectInScene [i].transform.position.y > ObjectSelectionner.transform.position.y - 0.1f && ObjectInScene [i].transform.position.z > ObjectSelectionner.transform.position.z - 0.1f){
-						ObjectSelectionner.transform.position = new Vector3 (PositionObject.x, PositionObject.y+1, PositionObject.z);
-						PositionObject = ObjectSelectionner.transform.position;
-						i = -1;
-						print (i);
-					}
-				}
-			}
+//			for (int i = 0; i < ObjectInScene.Length; i++) {
+//				if (ObjectInScene [i] != ObjectSelectionner) {
+//					print (i);
+//					if (ObjectInScene [i].transform.position.x < ObjectSelectionner.transform.position.x + 0.1f && ObjectInScene [i].transform.position.y < ObjectSelectionner.transform.position.y + 0.1f
+//					    && ObjectInScene [i].transform.position.z < ObjectSelectionner.transform.position.z + 0.1f && ObjectInScene [i].transform.position.x > ObjectSelectionner.transform.position.x - 0.1f
+//						&& ObjectInScene [i].transform.position.y > ObjectSelectionner.transform.position.y - 0.1f && ObjectInScene [i].transform.position.z > ObjectSelectionner.transform.position.z - 0.1f){
+//						ObjectSelectionner.transform.position = new Vector3 (PositionObject.x, PositionObject.y+1, PositionObject.z);
+//						PositionObject = ObjectSelectionner.transform.position;
+//						i = -1;
+//						print (i);
+//					}
+//				}
+//			}
 			ObjectSelectionner.GetComponent<SphereCollider> ().enabled = false;
 			ObjectSelectionner.GetComponent<BoxCollider> ().enabled = true;
 			print ("fuck");
@@ -249,7 +249,7 @@ public class PositionnementObjet : MonoBehaviour {
 			if (hit.transform.tag == "PositionObjet") {
 				ObjectSelectionner.transform.position = new Vector3 (hit.transform.position.x, PositionY, hit.transform.position.z);
 			}
-			if (hit.transform.tag == "ObjetBougeable" && hit.transform.gameObject != this.gameObject) {
+			if (hit.transform.tag == "ObjetBougeable" && hit.transform.gameObject != this.gameObject || hit.transform.tag == "ObjectInScene" && hit.transform.gameObject != this.gameObject) {
 				if (impossiblePosition == true) {
 					print ("remonter 1");
 					monter += 1;

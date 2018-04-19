@@ -11,7 +11,7 @@ public class RotationSalle : MonoBehaviour {
 
 
 	//Private
-	float RotationToMakeY = 0;
+	[HideInInspector] public float RotationToMakeY = 0;
 
 	// Use this for initialization
 	void Start () {

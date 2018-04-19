@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\CollisionVictoire.cs" />
      <Compile Include="Assets\Script\ColorationCase.cs" />
      <Compile Include="Assets\Script\Desactivation.cs" />
      <Compile Include="Assets\Script\DestructionImageRotation.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\Script\RotationSalle.cs" />
      <Compile Include="Assets\Script\Seringe.cs" />
      <Compile Include="Assets\Script\Sponge.cs" />
+     <Compile Include="Assets\Script\Ventilation.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
