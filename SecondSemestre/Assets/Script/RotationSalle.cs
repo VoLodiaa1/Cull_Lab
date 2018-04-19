@@ -36,7 +36,7 @@ public class RotationSalle : MonoBehaviour {
 
 	public void RotationHoraire (){
 		if (RotationToMakeY > 0) {
-			float depassementY ;
+			float depassementY;
 			depassementY = RotationToMakeY;
 			transform.Rotate (0, -VitesseRotationSalle, 0,Space.World);
 			RotationToMakeY -= VitesseRotationSalle;
@@ -58,7 +58,7 @@ public class RotationSalle : MonoBehaviour {
 
 	public void MakeTurn () {
 
-		if (RotationToMakeY == 0) {
+		if (RotationToMakeY < 90 && RotationToMakeY > 0 || RotationToMakeY > -90 && RotationToMakeY < 0 || RotationToMakeY ==0) {
 			if (EventSystem.current.currentSelectedGameObject.name == "Negatif") {
 				RotationToMakeY -= 90;
 			}

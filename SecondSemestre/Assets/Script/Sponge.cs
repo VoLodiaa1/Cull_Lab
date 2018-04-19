@@ -7,14 +7,21 @@ public class Sponge : MonoBehaviour {
 	public GameObject MaSalle;
 
 	bool objectSelected = false;
-	bool ObjectRotationned = false;
 	public Rigidbody rb;
 	int NumeroSeringe;
 	float timer;
 	bool Afusionner = false;
+	bool oneframe;
+	float timerColor;
+	float Scol;
+	float Hcol;
+	public int compteur10 =0;
 
 	Color Macolor;
 	public float h,s,v;
+	public float Hpourcent, Spourcent, Vpourcent;
+	bool premierepenetration = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -25,8 +32,17 @@ public class Sponge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (oneframe == true) {
+
+			timer += Time.deltaTime;
+			if (timer > 0.25f) {
+				oneframe = false;
+				timer = 0;
+			}
+		}
+
+
 		objectSelected = MaSalle.GetComponent<PositionnementObjet> ().ObjectController;
-		ObjectRotationned = MaSalle.GetComponent<PositionnementObjet> ().ModeRotation;
 
 		if (h < 0) {
 			h *= -1;
@@ -39,47 +55,102 @@ public class Sponge : MonoBehaviour {
 
 
 	void OnTriggerStay (Collider col) {
-		if (col.gameObject.name == "seringe" && objectSelected == false && ObjectRotationned == false) {
+		if (col.gameObject.name == "seringe" && objectSelected == false) {
 			GameObject parent = col.gameObject.transform.parent.gameObject;
 			NumeroSeringe = parent.GetComponent<Seringe> ().numeroSeringe;
-			timer += Time.deltaTime * 20;
+			if (compteur10 == 0) {
+				timer += Time.deltaTime * 20;
+			}
 			if (timer > NumeroSeringe) {
-				s = 1;
+				print ("timer");
+				if (premierepenetration == true) {
+					if (s < 1) {
+						Scol = parent.GetComponent<Seringe> ().s * 0.1f;
+					} else {
+						Scol = 0;
+					}
+					if (h != 0) {
+						Hcol = -parent.GetComponent<Seringe> ().h * 0.1f;
+					} else {
+						Hcol = parent.GetComponent<Seringe> ().h * 0.1f;
+					}
+					premierepenetration = false;
+				}
 
-				print ("seringe");
-				float Hcol = col.GetComponentInParent<Seringe> ().h;
-				h = h - Hcol;
-				timer = 0;
-				Afusionner = true;
-				Destroy (parent.gameObject);
+				timerColor += Time.deltaTime;
+				if (timerColor > 0.1f && compteur10 <10) {
+					print ("timercolor");
+					s += Scol;
+					h += Hcol;
+					Afusionner = true;
+					compteur10 += 1;
+					timerColor = 0;
+				}
+				if (compteur10 == 10) {
+					print ("tombe");
+					parent.GetComponent<BoxCollider> ().enabled = false;
+					col.GetComponent<BoxCollider> ().enabled = false;
+					premierepenetration = true;
+					compteur10 = 0;
+				}
 			}
 		}
 	}
 
 	void OnCollisionStay (Collision col) {
-		if (col.gameObject.name == "Sponge" && objectSelected == false && ObjectRotationned == false) {
-			float Hcol = col.gameObject.GetComponent<Sponge> ().h;
-			float Vcol = col.gameObject.GetComponent<Sponge> ().v;
+		if (col.gameObject.name == "Sponge" && objectSelected == false) {
+			print ("1er step");
+			if (premierepenetration == true) {
+				if (s < 1) {
+					Scol = col.gameObject.GetComponent<Sponge> ().v*0.1f;
+				} else {
+					Scol = 0;
+				}
+				if (h != 0) {
+					Hcol = -col.gameObject.GetComponent<Sponge> ().h*0.1f;
+				} else {
+					Hcol = col.gameObject.GetComponent<Sponge> ().h*0.1f;
+				}
+				premierepenetration = false;
+			}
 			Rigidbody rbcol	= col.gameObject.GetComponent<Rigidbody> ();
 
 			if (gameObject.transform.position.y > col.gameObject.transform.position.y && rb.velocity.magnitude == 0 && rbcol.velocity.magnitude == 0) {
 				if (gameObject.transform.position.x == col.gameObject.transform.position.x && gameObject.transform.position.z == col.gameObject.transform.position.z) {
+					print ("pasbouger");
 					if (h == 0 || Hcol == 0) {
-						h = 0;
+						h -= Hpourcent;
 						col.gameObject.GetComponent<Sponge> ().h = 0;
-						s = 0;
+						s -= Spourcent;
 						col.gameObject.GetComponent<Sponge> ().s = 0;
 						Afusionner = true;
-						Destroy (this.gameObject);
+						if (h == 0 && Hcol == 0) {
+
+						} else {
+							Destroy (this.gameObject);
+						}
 					} else {
-						h = h - Hcol;
-						col.gameObject.GetComponent<Sponge> ().h = h;
-						Afusionner = true;
-						Destroy (this.gameObject);
+						print ("colorisation");
+						timerColor += Time.deltaTime;
+						if (timerColor > 0.1f && compteur10 < 10) {
+							print ("timercolor2");
+							s += Scol;
+							h += Hcol;
+							Afusionner = true;
+							compteur10 += 1;
+							timerColor = 0;
+						}
+						if (compteur10 == 10) {
+							print ("tombe");
+							this.GetComponent<BoxCollider> ().enabled = false;
+							premierepenetration = true;
+							compteur10 = 0;
+						}
 					}
 
 				}
 			}
 		}
 	}
+
 }
