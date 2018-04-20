@@ -6,6 +6,7 @@ public class Desactivation : MonoBehaviour {
 
 	public GameObject MaSalle;
 	Vector3 PositionObject;
+	[HideInInspector] public int valeurmvt;
 
 	// Use this for initialization
 	void Start () {
@@ -17,31 +18,28 @@ public class Desactivation : MonoBehaviour {
 
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
 			if (this.gameObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
-				gameObject.layer = 2;
 			}
 
 			if (PositionObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position ) {
+				print ("positionpossible");
 				MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = false;
+				valeurmvt += 1;
+
 				PositionObject = MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position;
 			}
 		} else {
-			gameObject.layer = 0;
+			
 		}
 
-		if (MaSalle.GetComponent<PositionnementObjet> ().ModeRotation == false && this.gameObject != MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner) {
-			GetComponent<Rigidbody> ().useGravity = true;
-		} else {
-			GetComponent<Rigidbody> ().useGravity = false;
-		}
 	
 	}
 		
 
 	void OnTriggerStay(Collider other) {
-		print ("Base");
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
-			if (this.gameObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
-				if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe") {
+			if (this.gameObject == MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
+				if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe" && this.transform.name != "base"
+                    || other.transform.tag == "ObjectInScene" && other.transform.name != "seringe" && this.transform.name != "base") {
 					print ("Enfoncer");
 					MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = true;
 				}

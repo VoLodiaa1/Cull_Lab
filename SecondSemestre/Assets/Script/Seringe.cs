@@ -16,6 +16,6 @@ public class Seringe : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		MaCouleur = GetComponent<Renderer> ().material.color;
 	}
 }

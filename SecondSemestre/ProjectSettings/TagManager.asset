@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PositionObjet
   - ObjetBougeable
+  - ObjectInScene
   layers:
   - Default
   - TransparentFX

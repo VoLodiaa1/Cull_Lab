@@ -12,6 +12,8 @@ public class ColorationCase : MonoBehaviour {
 	int positionZ;
 	int TotalePosition;
 
+    
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +21,6 @@ public class ColorationCase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		TotalePosition = positionX + positionY + positionZ;
 
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
