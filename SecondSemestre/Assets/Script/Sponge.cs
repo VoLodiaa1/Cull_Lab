@@ -88,6 +88,7 @@ public class Sponge : MonoBehaviour {
 				}
 				if (compteur10 == 10) {
 					print ("tombe");
+                    parent.GetComponent<UseGravity>().injecteurDone = true;
 					parent.GetComponent<BoxCollider> ().enabled = false;
 					col.GetComponent<BoxCollider> ().enabled = false;
 					premierepenetration = true;
