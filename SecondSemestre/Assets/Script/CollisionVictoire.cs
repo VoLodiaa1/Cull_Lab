@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisionVictoire : MonoBehaviour {
+
+    public GameObject Victoire;
+    float Timer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +18,25 @@ public class CollisionVictoire : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter (Collider col) {
+    void OnTriggerEnter (Collider col)
+    {
+        if (col.transform.name == "Avatar")
+        {
+            Rigidbody rb = col.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
+
+        }
+    }
+
+    void OnTriggerStay (Collider col) {
 		if (col.transform.name == "Avatar") {
-			print ("VICTOIRE");
+            col.transform.gameObject.layer = 2;
+            col.transform.position = Vector3.Lerp(col.transform.position, transform.position, 0.1f);
+            Timer += Time.deltaTime;
+            if(Timer >3)
+            {
+                Victoire.SetActive(true);
+            }
 		}
 	}
 }

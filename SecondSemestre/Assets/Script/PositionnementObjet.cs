@@ -18,7 +18,7 @@ public class PositionnementObjet : MonoBehaviour {
 	float RotationToMakeObjectX;
 	float RotationToMakeObjectY;
 	float RotationToMakeObjectZ;
-	float PositionY = 0.5f;
+	public float PositionY = 0.5f;
 	float timer =0;
 	Vector3 PositionObject;
 	[HideInInspector] public bool ObjectController = false;
@@ -28,7 +28,7 @@ public class PositionnementObjet : MonoBehaviour {
 	public bool PeutChangerDeMode = true;
 	public bool impossiblePosition = false;
 	[HideInInspector]public Rigidbody rb;
-	int monter =1;
+	int monter =0;
 	int surplus;
 	[HideInInspector] public bool CorrectionBug = false;
 	public Text compteurdemouvement;
@@ -73,7 +73,7 @@ public class PositionnementObjet : MonoBehaviour {
 			//ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
 			ObjectSelectionner.layer = 0;
 			ObjectSelectionner = null;
-			rb.useGravity = true;
+			ObjectSelectionner.transform.position = PositionObject;
 			rb = null;
 			ObjectController = false;
 			oneframe = true;
@@ -117,7 +117,6 @@ public class PositionnementObjet : MonoBehaviour {
 					ObjectSelectionner.GetComponent<Desactivation> ().valeurmvt = 0;
 					if (ObjectSelectionner.GetComponent<Rigidbody> () != null) {
 						rb = ObjectSelectionner.GetComponent<Rigidbody> ();
-						rb.useGravity = false;
 						//}
 						if (rb.velocity.magnitude == 0) {
 							PositionY = ObjectSelectionner.transform.position.y;
@@ -189,11 +188,11 @@ public class PositionnementObjet : MonoBehaviour {
 				//ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
 				ObjectSelectionner.layer = 0;
 				ObjectSelectionner = null;
-				rb.useGravity = true;
 				rb = null;
 				ObjectController = false;
 				oneframe = true;
 				nombreaction += 1;
+                monter = 0;
 				nbaction.text = "Nb d'action : " + nombreaction;
 			}
 		}
@@ -249,7 +248,7 @@ public class PositionnementObjet : MonoBehaviour {
 			if (hit.transform.tag == "PositionObjet") {
 				ObjectSelectionner.transform.position = new Vector3 (hit.transform.position.x, PositionY, hit.transform.position.z);
 			}
-			if (hit.transform.tag == "ObjetBougeable" && hit.transform.gameObject != this.gameObject || hit.transform.tag == "ObjectInScene" && hit.transform.gameObject != this.gameObject) {
+			if (hit.transform.tag == "ObjetBougeable" && hit.transform.gameObject != ObjectSelectionner.transform.gameObject || hit.transform.tag == "ObjectInScene" && hit.transform.gameObject != ObjectSelectionner.transform.gameObject) {
 				if (impossiblePosition == true) {
 					print ("remonter 1");
 					monter += 1;
@@ -259,7 +258,7 @@ public class PositionnementObjet : MonoBehaviour {
 					monter -= 1;
 				}
 			} else {
-				monter = 1;
+				monter = 0;
 			}
 
 		}

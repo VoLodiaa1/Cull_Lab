@@ -15,22 +15,20 @@ public class Ventilation : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (transform.rotation != RotationOriginel) {
 			transform.rotation = RotationOriginel;
 		}
 
-		Helice.transform.Rotate (5, 0, 0);
+		Helice.transform.Rotate (0, 0, 10);
 
 
 		RaycastHit Hit;
-		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.right), out Hit, Mathf.Infinity)) {
-			
-			if (Masalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != this.gameObject && Masalle.GetComponent<RotationSalle>().RotationToMakeY==0) {
+		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out Hit, Mathf.Infinity)) {
+			if (Masalle.GetComponent<PositionnementObjet> ().ObjectController == false && Masalle.GetComponent<RotationSalle>().RotationToMakeY==0) {
 				if (Hit.transform.name == "Avatar") {
-
 					Rigidbody rb = Hit.transform.GetComponent<Rigidbody> ();
-					rb.AddForce (this.transform.right * 10);
+					rb.AddForce (this.transform.forward * 10);
 				}
 			}
 		}

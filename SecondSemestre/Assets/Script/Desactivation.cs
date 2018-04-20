@@ -21,7 +21,7 @@ public class Desactivation : MonoBehaviour {
 			}
 
 			if (PositionObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position ) {
-				print ("positionposible");
+				print ("positionpossible");
 				MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = false;
 				valeurmvt += 1;
 
@@ -31,11 +31,6 @@ public class Desactivation : MonoBehaviour {
 			
 		}
 
-		if (MaSalle.GetComponent<PositionnementObjet> ().ModeRotation == false && this.gameObject != MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner) {
-			GetComponent<Rigidbody> ().useGravity = true;
-		} else {
-			GetComponent<Rigidbody> ().useGravity = false;
-		}
 	
 	}
 		
@@ -43,7 +38,8 @@ public class Desactivation : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
 			if (this.gameObject == MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
-				if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe" && this.transform.name != "base") {
+				if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe" && this.transform.name != "base"
+                    || other.transform.tag == "ObjectInScene" && other.transform.name != "seringe" && this.transform.name != "base") {
 					print ("Enfoncer");
 					MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = true;
 				}
