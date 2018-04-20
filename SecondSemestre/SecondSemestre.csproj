@@ -300,6 +300,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\3DAsset\AnimFan.cs" />
+    <Compile Include="Assets\3DAsset\Juicy\MyJuice.cs" />
     <Compile Include="Assets\Script\CollisionVictoire.cs" />
     <Compile Include="Assets\Script\ColorationCase.cs" />
     <Compile Include="Assets\Script\Desactivation.cs" />
