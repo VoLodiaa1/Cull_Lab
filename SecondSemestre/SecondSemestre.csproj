@@ -304,6 +304,7 @@
     <Compile Include="Assets\3DAsset\Juicy\MyJuice.cs" />
     <Compile Include="Assets\Script\CollisionVictoire.cs" />
     <Compile Include="Assets\Script\ColorationCase.cs" />
+    <Compile Include="Assets\Script\ColorFusion.cs" />
     <Compile Include="Assets\Script\Desactivation.cs" />
     <Compile Include="Assets\Script\DestructionImageRotation.cs" />
     <Compile Include="Assets\Script\PenetrationSol.cs" />

@@ -25,7 +25,9 @@ public class Sponge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Macolor = GetComponent<Renderer> ().material.color;
+        MaSalle = GameObject.Find("Salle");
+
+        Macolor = GetComponent<Renderer> ().material.color;
 		Color.RGBToHSV (Macolor,out h,out s,out v);
 		rb = GetComponent<Rigidbody> ();
 	}
