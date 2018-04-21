@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/3DAsset/LightAsset.unity
-  isLoaded: 1
-  isActive: 1
