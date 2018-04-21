@@ -31,8 +31,14 @@ public class RotationSalle : MonoBehaviour {
 			RotationToMakeY += 90;
 		}
 		if (RotationToMakeY != 0) {
+            Ventilateur.GetComponent<BoxCollider>().enabled = false;
 			RotationHoraire();
-		}
+        }
+        else
+        {
+
+            Ventilateur.GetComponent<BoxCollider>().enabled = true;
+        }
 		
 	}
 

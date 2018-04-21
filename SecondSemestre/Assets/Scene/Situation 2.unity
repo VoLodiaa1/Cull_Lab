@@ -5565,6 +5565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 1692191215}
+  injecteurDone: 0
 --- !u!114 &603800053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6410,7 +6411,7 @@ GameObject:
   - component: {fileID: 699354305}
   - component: {fileID: 699354304}
   - component: {fileID: 699354307}
-  - component: {fileID: 699354306}
+  - component: {fileID: 699354308}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: ObjectInScene
@@ -6535,28 +6536,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: -0.00000023841858}
---- !u!114 &699354306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 699354297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44b9594d8e42ad4e851c18a015312ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaSalle: {fileID: 1692191215}
-  objectSelected: 0
-  rb: {fileID: 0}
-  compteur10: 0
-  h: 0
-  s: 0
-  v: 0
-  Hpourcent: 0
-  Spourcent: 0
-  Vpourcent: 0
-  premierepenetration: 1
 --- !u!114 &699354307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6569,6 +6548,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 1692191215}
+  injecteurDone: 0
+--- !u!114 &699354308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 699354297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851417ef1f6c1db4ba031a808f446d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentColor: 0
+  ColorLerped: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &722631803
 GameObject:
   m_ObjectHideFlags: 0
@@ -6854,6 +6847,7 @@ GameObject:
   - component: {fileID: 741462764}
   - component: {fileID: 741462763}
   - component: {fileID: 741462762}
+  - component: {fileID: 741462765}
   m_Layer: 0
   m_Name: seringe
   m_TagString: Untagged
@@ -6927,6 +6921,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741462760}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &741462765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741462760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6073cbb86505314c985589e6eafdcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaCouleur: {r: 0, g: 0, b: 0, a: 0}
+  h: 0
+  s: 0
+  v: 0
+  numeroSeringe: 0
+  ValeurCouleur: 1
 --- !u!1 &754916992
 GameObject:
   m_ObjectHideFlags: 0
@@ -7799,6 +7810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 0}
+  injecteurDone: 0
 --- !u!1 &851496283
 GameObject:
   m_ObjectHideFlags: 0
@@ -14833,6 +14845,7 @@ MonoBehaviour:
   s: 0
   v: 0
   numeroSeringe: 0
+  ValeurCouleur: 0
 --- !u!114 &1607616695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14845,6 +14858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 1692191215}
+  injecteurDone: 0
 --- !u!1 &1657676753
 GameObject:
   m_ObjectHideFlags: 0
@@ -15567,6 +15581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Victoire: {fileID: 959211523}
+  ColorToHaveForWin: 1
 --- !u!23 &1713141258
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20214,6 +20229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Victoire: {fileID: 1692191215}
+  ColorToHaveForWin: 1
 --- !u!1 &2136330435
 GameObject:
   m_ObjectHideFlags: 0

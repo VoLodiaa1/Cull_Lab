@@ -7,6 +7,7 @@ public class Seringe : MonoBehaviour {
 	public Color MaCouleur;
 	public float h, s,v;
 	public int numeroSeringe;
+    public int ValeurCouleur;
 
 	// Use this for initialization
 	void Start () {
