@@ -33,7 +33,7 @@ public class CollisionVictoire : MonoBehaviour {
             col.transform.gameObject.layer = 2;
             col.transform.position = Vector3.Lerp(col.transform.position, transform.position, 0.1f);
             Timer += Time.deltaTime;
-            if(Timer >1.5)
+            if(Timer >3)
             {
                 Victoire.SetActive(true);
             }

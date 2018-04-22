@@ -6,18 +6,17 @@ public class UseGravity : MonoBehaviour {
 
     Rigidbody rb;
     public GameObject masalle;
-    [HideInInspector] public bool injecteurDone = false;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
-	}
+        masalle = GameObject.Find("Salle");
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         RaycastHit Hit;
-
-        if (injecteurDone == false)
+        if (transform.name != "Base")
         {
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out Hit, 0.501f))
             {

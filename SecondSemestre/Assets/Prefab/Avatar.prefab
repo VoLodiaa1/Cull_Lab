@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 0}
-  injecteurDone: 0
 --- !u!135 &135777487977959054
 SphereCollider:
   m_ObjectHideFlags: 1
