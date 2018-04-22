@@ -25,7 +25,12 @@ public class Sponge : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
        MaSalle = GameObject.Find("Salle");
+=======
+        MaSalle = GameObject.Find("Salle");
+
+>>>>>>> def56032fe7ee8756226eeaf12bae98245dc6fd0
         Macolor = GetComponent<Renderer> ().material.color;
 		Color.RGBToHSV (Macolor,out h,out s,out v);
 		rb = GetComponent<Rigidbody> ();
@@ -89,6 +94,7 @@ public class Sponge : MonoBehaviour {
 				}
 				if (compteur10 == 10) {
 					print ("tombe");
+                    parent.GetComponent<UseGravity>().injecteurDone = true;
 					parent.GetComponent<BoxCollider> ().enabled = false;
 					col.GetComponent<BoxCollider> ().enabled = false;
 					premierepenetration = true;
