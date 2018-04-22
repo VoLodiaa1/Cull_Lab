@@ -20,9 +20,12 @@ public class LvlEditorBehavior : MonoBehaviour {
     {
        GameObject instObj = Instantiate(obj, SpawnPoint.transform.position, Quaternion.identity, GameObject.Find("Salle").transform);
         instObj.transform.tag = "ObjetBougeable";
-        if(instObj.GetComponent<MeshRenderer>().enabled == false)
+        if (instObj.GetComponent<MeshRenderer>() != null)
         {
-            instObj.GetComponent<MeshRenderer>().enabled = true;
+            if (instObj.GetComponent<MeshRenderer>().enabled == false)
+            {
+                instObj.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
     }
 
