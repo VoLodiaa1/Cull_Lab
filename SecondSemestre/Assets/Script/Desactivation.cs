@@ -11,7 +11,6 @@ public class Desactivation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MaSalle = GameObject.Find("Salle");
-<<<<<<< HEAD
 	}
 	
 	// Update is called once per frame
@@ -39,30 +38,6 @@ public class Desactivation : MonoBehaviour {
             }
 
         }
-=======
-
-    }
-
-    // Update is called once per frame
-    void FixedUpdate () {
-
-		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
-			if (this.gameObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
-			}
-
-			if (PositionObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position ) {
-				print ("positionpossible");
-				MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = false;
-				valeurmvt += 1;
-
-				PositionObject = MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position;
-			}
-		} else {
-			
-		}
-
-	
->>>>>>> def56032fe7ee8756226eeaf12bae98245dc6fd0
 	}
 		
 

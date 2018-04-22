@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -387,12 +387,7 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4cfca3894c5d07746875fb68e522a82c, type: 2}
-    - target: {fileID: 13700000, guid: 1426ddc1bcfa5b24e978e3a2fe670adb, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9500000, guid: 1426ddc1bcfa5b24e978e3a2fe670adb, type: 3}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1426ddc1bcfa5b24e978e3a2fe670adb, type: 3}
   m_IsPrefabParent: 0
 --- !u!1001 &281502085
@@ -409,11 +404,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4401808181580182, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.54
+      value: 0.318
       objectReference: {fileID: 0}
     - target: {fileID: 4401808181580182, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: -0.007999986
       objectReference: {fileID: 0}
     - target: {fileID: 4401808181580182, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -528,72 +523,12 @@ Prefab:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[3].outSlope
       value: -18.103413
       objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.minMaxState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: TrailModule.lifetime.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-        type: 2}
-      propertyPath: prewarm
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &281502086 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4401808181580182, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
-    type: 2}
-  m_PrefabInternal: {fileID: 281502085}
---- !u!1 &524462798 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 1426ddc1bcfa5b24e978e3a2fe670adb, type: 3}
-  m_PrefabInternal: {fileID: 278257152}
---- !u!114 &524462799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524462798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25372d978c22e504095f085d78bb3799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Wind: {fileID: 539819060}
-  ParticuleHolder: {fileID: 1986476339}
-  StartOrientation: 0
-  SalleOrientation: 0
-  previous: 0
-  next: 0
-  OnOff: 0
-  right: 0
-  left: 0
-  ParticuleRotattion: 0
---- !u!198 &539819060 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198763929599513936, guid: 7ddb8e21c81c7e4408ba1dcc45e98c7f,
     type: 2}
   m_PrefabInternal: {fileID: 281502085}
 --- !u!1 &938053850
@@ -699,10 +634,10 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068598050}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.9918865, g: 0.41176468, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

@@ -290,12 +290,9 @@
   <ItemGroup>
     <Compile Include="Assets\3DAsset\AnimFan.cs" />
     <Compile Include="Assets\3DAsset\Juicy\MyJuice.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\LvlEditorBehavior.cs" />
     <Compile Include="Assets\ObjectContainer.cs" />
     <Compile Include="Assets\ObjectSaver.cs" />
-=======
->>>>>>> def56032fe7ee8756226eeaf12bae98245dc6fd0
     <Compile Include="Assets\Script\CollisionVictoire.cs" />
     <Compile Include="Assets\Script\ColorationCase.cs" />
     <Compile Include="Assets\Script\ColorFusion.cs" />

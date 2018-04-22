@@ -7,7 +7,6 @@ public class CollisionVictoire : MonoBehaviour {
 
     public GameObject Victoire;
     float Timer = 0;
-    public int ColorToHaveForWin;
 
 	// Use this for initialization
 	void Start () {
@@ -30,18 +29,14 @@ public class CollisionVictoire : MonoBehaviour {
     }
 
     void OnTriggerStay (Collider col) {
-        if (col.GetComponent<ColorFusion>().CurrentColor == ColorToHaveForWin)
-        {
-            if (col.transform.name == "Avatar")
+		if (col.transform.name == "Avatar") {
+            col.transform.gameObject.layer = 2;
+            col.transform.position = Vector3.Lerp(col.transform.position, transform.position, 0.1f);
+            Timer += Time.deltaTime;
+            if(Timer >3)
             {
-                col.transform.gameObject.layer = 2;
-                col.transform.position = Vector3.Lerp(col.transform.position, transform.position, 0.1f);
-                Timer += Time.deltaTime;
-                if (Timer > 1.5)
-                {
-                    Victoire.SetActive(true);
-                }
+                Victoire.SetActive(true);
             }
-        }
+		}
 	}
 }

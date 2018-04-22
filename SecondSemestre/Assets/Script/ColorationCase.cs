@@ -16,12 +16,11 @@ public class ColorationCase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        MaSalle = GameObject.Find("Salle");
-
-    }
-
-    // Update is called once per frame
-    void Update () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
 		TotalePosition = positionX + positionY + positionZ;
 
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
