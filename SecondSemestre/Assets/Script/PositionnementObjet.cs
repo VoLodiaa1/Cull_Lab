@@ -53,7 +53,10 @@ public class PositionnementObjet : MonoBehaviour {
 
 		// REPLACEMENT HAUT DE PILE
 		if (impossiblePosition == true && Input.GetKeyUp(KeyCode.Mouse0)) {
-			ObjectSelectionner.transform.position = PositionObject;
+            if (ObjectSelectionner != null)
+            {
+                ObjectSelectionner.transform.position = PositionObject;
+            }
 //			for (int i = 0; i < ObjectInScene.Length; i++) {
 //				if (ObjectInScene [i] != ObjectSelectionner) {
 //					print (i);
