@@ -9,13 +9,13 @@ public class UseGravity : MonoBehaviour {
     [HideInInspector] public bool injecteurDone = false;
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
         masalle = GameObject.Find("Salle");
 
-    }
-
-    // Update is called once per frame
-    void Update () {
+        rb = GetComponent<Rigidbody>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
         RaycastHit Hit;
 

@@ -8,6 +8,7 @@ public class MyJuice : MonoBehaviour {
 	public float BounceTime;
 	private float timer;
 	GameObject MeshObjet;
+	public bool onetime;
 	
 	private Vector3 startScale;
 	// Use this for initialization
@@ -26,23 +27,45 @@ IEnumerator Bounce(){
 		float x = (Time.time - timer)/BounceTime;
 		
 		MeshObjet.transform.localScale = new Vector3(1.5f - BounceCurve.Evaluate(x)*0.5f,BounceCurve.Evaluate(x),1.5f - BounceCurve.Evaluate(x)*0.5f);
-		MeshObjet.transform.position = position - new Vector3 (0f,0.5f - BounceCurve.Evaluate(x) *0.5f,0f);
+	//	MeshObjet.transform.position = position - new Vector3 (0f,0.5f - BounceCurve.Evaluate(x) *0.5f,0f);
 
 		
 	   yield return null;
+	   
+
 	}
 	MeshObjet.transform.localScale = Vector3.one;
-	MeshObjet.transform.position = position;
-		
+	//MeshObjet.transform.position = position;
+	
 	}
 
-	void OnMouseEnter()
+IEnumerator Timer(){
+
+	for(int i = 0; i<10 ; i++)
 	{
-		StartCoroutine(Bounce());
+		new WaitForSeconds(BounceTime);
+		onetime=true;
+
+		if(i==9)
+		{
+			onetime=false;
+			break;
+		}
+
+		yield return null;
 	}
+
+ 	
+}
 	
 	void OnCollisionEnter(Collision col){
-		StartCoroutine(Bounce());
+		if(!onetime){
+			StartCoroutine(Bounce());
+			onetime=true;
+			
+
+		}
+		
 	
 	
 	}

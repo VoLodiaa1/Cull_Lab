@@ -31,13 +31,20 @@ public class RotationSalle : MonoBehaviour {
 			RotationToMakeY += 90;
 		}
 		if (RotationToMakeY != 0) {
+            if (Ventilateur != null)
+            {
+
             Ventilateur.GetComponent<BoxCollider>().enabled = false;
+            }
 			RotationHoraire();
         }
         else
         {
+            if (Ventilateur != null)
+            {
 
             Ventilateur.GetComponent<BoxCollider>().enabled = true;
+            }
         }
 		
 	}
@@ -47,8 +54,11 @@ public class RotationSalle : MonoBehaviour {
 		if (RotationToMakeY > 0) {
 			float depassementY;
 			depassementY = RotationToMakeY;
-			PivotCamera.transform.Rotate (0, -VitesseRotationSalle, 0,Space.World);
+            PivotCamera.transform.Rotate(0, -VitesseRotationSalle, 0, Space.World);
+            if (Ventilateur != null)
+            {
             Ventilateur.transform.Rotate(0, -VitesseRotationSalle, 0, Space.World);
+            }
         
             RotationToMakeY -= VitesseRotationSalle;
 			if (depassementY < 0) {
@@ -60,7 +70,11 @@ public class RotationSalle : MonoBehaviour {
 			float depassementY ;
 			depassementY = RotationToMakeY;
             PivotCamera.transform.Rotate (0, VitesseRotationSalle, 0,Space.World);
+            if (Ventilateur != null)
+            {
+
             Ventilateur.transform.Rotate(0, VitesseRotationSalle, 0, Space.World);
+            }
             RotationToMakeY += VitesseRotationSalle;
 			if (depassementY > 0) {
 				RotationToMakeY -= depassementY;

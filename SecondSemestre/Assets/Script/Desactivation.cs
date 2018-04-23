@@ -11,11 +11,10 @@ public class Desactivation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MaSalle = GameObject.Find("Salle");
-
-    }
-
-    // Update is called once per frame
-    void FixedUpdate () {
+	}
+	
+	// Update is called once per frame
+	void FixedUpdate () {
 
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
 			if (this.gameObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
