@@ -2,8 +2,13 @@
 /SecondSemestre/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
+<<<<<<< HEAD
 /[Bb]uild/
 /[Bb]uilds/
+=======
+/SecondSemestre/[Bb]uild/
+/SecondSemestre/[Bb]uilds/
+>>>>>>> IntegrationAssetsHugo
 /SecondSemestre/[Tt]emp/
 /SecondSemestre/[Oo]bj/
 /SecondSemestre/[Bb]uild/
