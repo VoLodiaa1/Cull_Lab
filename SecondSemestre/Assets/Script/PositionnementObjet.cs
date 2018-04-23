@@ -56,31 +56,32 @@ public class PositionnementObjet : MonoBehaviour {
             if (ObjectSelectionner != null)
             {
                 ObjectSelectionner.transform.position = PositionObject;
+
+                //			for (int i = 0; i < ObjectInScene.Length; i++) {
+                //				if (ObjectInScene [i] != ObjectSelectionner) {
+                //					print (i);
+                //					if (ObjectInScene [i].transform.position.x < ObjectSelectionner.transform.position.x + 0.1f && ObjectInScene [i].transform.position.y < ObjectSelectionner.transform.position.y + 0.1f
+                //					    && ObjectInScene [i].transform.position.z < ObjectSelectionner.transform.position.z + 0.1f && ObjectInScene [i].transform.position.x > ObjectSelectionner.transform.position.x - 0.1f
+                //						&& ObjectInScene [i].transform.position.y > ObjectSelectionner.transform.position.y - 0.1f && ObjectInScene [i].transform.position.z > ObjectSelectionner.transform.position.z - 0.1f){
+                //						ObjectSelectionner.transform.position = new Vector3 (PositionObject.x, PositionObject.y+1, PositionObject.z);
+                //						PositionObject = ObjectSelectionner.transform.position;
+                //						i = -1;
+                //						print (i);
+                //					}
+                //				}
+                //			}
+                ObjectSelectionner.GetComponent<SphereCollider>().enabled = false;
+                ObjectSelectionner.GetComponent<BoxCollider>().enabled = true;
+                print("fuck");
+                //ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
+                ObjectSelectionner.layer = 0;
+                ObjectSelectionner = null;
+               // ObjectSelectionner.transform.position = PositionObject;
+                rb = null;
+                ObjectController = false;
+                oneframe = true;
+                impossiblePosition = false;
             }
-//			for (int i = 0; i < ObjectInScene.Length; i++) {
-//				if (ObjectInScene [i] != ObjectSelectionner) {
-//					print (i);
-//					if (ObjectInScene [i].transform.position.x < ObjectSelectionner.transform.position.x + 0.1f && ObjectInScene [i].transform.position.y < ObjectSelectionner.transform.position.y + 0.1f
-//					    && ObjectInScene [i].transform.position.z < ObjectSelectionner.transform.position.z + 0.1f && ObjectInScene [i].transform.position.x > ObjectSelectionner.transform.position.x - 0.1f
-//						&& ObjectInScene [i].transform.position.y > ObjectSelectionner.transform.position.y - 0.1f && ObjectInScene [i].transform.position.z > ObjectSelectionner.transform.position.z - 0.1f){
-//						ObjectSelectionner.transform.position = new Vector3 (PositionObject.x, PositionObject.y+1, PositionObject.z);
-//						PositionObject = ObjectSelectionner.transform.position;
-//						i = -1;
-//						print (i);
-//					}
-//				}
-//			}
-			ObjectSelectionner.GetComponent<SphereCollider> ().enabled = false;
-			ObjectSelectionner.GetComponent<BoxCollider> ().enabled = true;
-			print ("fuck");
-			//ObjectSelectionner.GetComponent<Renderer>().material = Basematerial;
-			ObjectSelectionner.layer = 0;
-			ObjectSelectionner = null;
-			ObjectSelectionner.transform.position = PositionObject;
-			rb = null;
-			ObjectController = false;
-			oneframe = true;
-			impossiblePosition = false;
 		}
 			
 		//INSTANCIATE ROTATION
