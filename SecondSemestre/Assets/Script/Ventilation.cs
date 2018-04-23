@@ -31,29 +31,16 @@ public class Ventilation : MonoBehaviour {
             //Helice.transform.Rotate (0, 0, 10);
 
 
-<<<<<<< HEAD
             RaycastHit Hit;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out Hit, Mathf.Infinity))
-=======
-		RaycastHit Hit;
-		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.back), out Hit, Mathf.Infinity)) {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back*10), Color.green);
-            if (Masalle.GetComponent<PositionnementObjet>().ObjectController == false && Masalle.GetComponent<RotationSalle>().RotationToMakeY == 0)
->>>>>>> IntegrationAssetsHugo
             {
                 if (Masalle.GetComponent<PositionnementObjet>().ObjectController == false && Masalle.GetComponent<RotationSalle>().RotationToMakeY == 0)
                 {
-<<<<<<< HEAD
                     if (Hit.transform.name == "Avatar")
                     {
                         Rigidbody rb = Hit.transform.GetComponent<Rigidbody>();
                         rb.AddForce(this.transform.forward * 10);
                     }
-=======
-                    print("Vol");
-                    Rigidbody rb = Hit.transform.GetComponent<Rigidbody>();
-                    rb.AddForce (this.transform.forward * -10);
->>>>>>> IntegrationAssetsHugo
                 }
             }
         }
