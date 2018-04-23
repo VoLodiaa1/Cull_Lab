@@ -19,15 +19,15 @@ public class Ventilation : MonoBehaviour {
 
 
 		RaycastHit Hit;
-		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out Hit, Mathf.Infinity)) {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward*10), Color.green);
+		if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.back), out Hit, Mathf.Infinity)) {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back*10), Color.green);
             if (Masalle.GetComponent<PositionnementObjet>().ObjectController == false && Masalle.GetComponent<RotationSalle>().RotationToMakeY == 0)
             {
                 if (Hit.transform.name == "Avatar")
                 {
                     print("Vol");
                     Rigidbody rb = Hit.transform.GetComponent<Rigidbody>();
-                    rb.AddForce (this.transform.forward * 10);
+                    rb.AddForce (this.transform.forward * -10);
                 }
             }else
             {

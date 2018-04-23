@@ -8,10 +8,12 @@ public ParticleSystem Wind;
 public GameObject ParticuleHolder;
 public int StartOrientation;
 public int SalleOrientation;
-public int previous, next;
-public bool OnOff,right, left;
-private bool isOn;
+public int previous;
+public bool OnOff;
+private bool isOn, EndTransision;
 public float ParticuleRotattion;
+
+public GlobalOrientation Script;
 
 SkinnedMeshRenderer skin;
 	// Use this for initialization
@@ -20,42 +22,36 @@ SkinnedMeshRenderer skin;
 		ParticuleStartOrientation();
 		Wind.Pause();
 	}
-	IEnumerator On()
+	IEnumerator On(int BlendShape)
 	{
+		previous =BlendShape;
+
+
 		for(float i = 0f;i<102f; i+=2f)
 		{
-			skin.SetBlendShapeWeight(StartOrientation,i);
-			yield return null;
+			if(i==80)
+		{
+			//if(Wind.isPlaying==false)
+			
+		//	Wind.Play();
+		//	print("salope");
+		}
+
+			skin.SetBlendShapeWeight(BlendShape,i);
+			yield return null;		
 		}			
 	}
 	
-		IEnumerator Off()
-		{	
-			if(Wind.isStopped==false)
-			Wind.Stop();
-
-			for(float i = 100f;i>0f; i-=2f)
+		IEnumerator Off(int BlendShape)
+		{			
+			for(float i = 100f;i>-2f; i-=2f)
 		{
-			skin.SetBlendShapeWeight(StartOrientation,i);
+			skin.SetBlendShapeWeight(BlendShape,i);
 			yield return null;
 		}
 	}
 
-	IEnumerator ChangementOrientation()
-	{	
-		for(float i = 0f;i<102f; i+=2f)
-		{
-			skin.SetBlendShapeWeight(next,i);
-			yield return null;
-		}			
 
-			for(float i = 100f;i>0f; i-=2f)
-		{
-			skin.SetBlendShapeWeight(previous,i);
-			yield return null;
-		}
-
-	}
 
 	void ParticuleStartOrientation()
 	{
@@ -85,57 +81,83 @@ SkinnedMeshRenderer skin;
 		}
 	}
 
+void ParticuleOrientation()
+	{
+		if(SalleOrientation ==0)
+		{
+			ParticuleRotattion =90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==1)
+		{
+			ParticuleRotattion =180f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==2)
+		{
+			ParticuleRotattion =-90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==3)
+		{
+			ParticuleRotattion =0f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+	}
 	
 
 	// Update is called once per frame
 	void Update () {
-		//ParticuleOrientation();
-		if(right)
-		{
-			if(SalleOrientation>0 && SalleOrientation<3)
-			{
-				SalleOrientation +=1;
-				previous =SalleOrientation -1;
-				next =SalleOrientation+1;
 
-			}else{
-				SalleOrientation =3;
-				previous =SalleOrientation;
-				next =0;
-			}
-			if(OnOff)
-			StartCoroutine(ChangementOrientation());
-			right=false;
+		SalleOrientation =Script.CurrentOrientation;
 		
-				
-		}
-		if(left)
-		{
-			StartCoroutine(ChangementOrientation());
-			left=false;
-
-
-		}
 	
+
+	
+		//Lance l'anim
 
 		if(OnOff && !isOn)
 		{
-			StartCoroutine(On());
+			StartCoroutine(On(SalleOrientation));
 			isOn=true;
-			
+		//Arret pour drag n drop	
 		}
 		if (!OnOff && isOn){
-			StartCoroutine(Off());
+			StartCoroutine(Off(SalleOrientation));
 			isOn=false;
 
 		}
-
-		if(skin.GetBlendShapeWeight(StartOrientation)==100)
+		//tansition quand on tourner la salle
+		if(previous!=SalleOrientation && !EndTransision)
 		{
-			if(Wind.isPlaying==false)
-			Wind.Play();
+			StartCoroutine(Off(previous));
+
+			if(!Wind.isStopped)
+			{
+			Wind.Stop();
+			}
+
+			StartCoroutine(On(SalleOrientation));
+			EndTransision =true;
 
 		}
+		else{
+			EndTransision=false;
+
+			if(!Wind.isPlaying)
+			{
+			new	WaitForSeconds(1f);
+			ParticuleOrientation();
+			Wind.Play();
+			}
+
+		}
+
+	
 		
 	}
 }
