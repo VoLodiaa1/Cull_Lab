@@ -297,8 +297,11 @@
     <Compile Include="Assets\3DAsset\AnimFan.cs" />
     <Compile Include="Assets\3DAsset\Juicy\MyJuice.cs" />
     <Compile Include="Assets\LvlEditorBehavior.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\ObjectContainer.cs" />
     <Compile Include="Assets\ObjectSaver.cs" />
+=======
+>>>>>>> Dev
     <Compile Include="Assets\Script\CollisionVictoire.cs" />
     <Compile Include="Assets\Script\ColorationCase.cs" />
     <Compile Include="Assets\Script\ColorFusion.cs" />
