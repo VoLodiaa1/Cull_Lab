@@ -15,8 +15,7 @@ public class Desactivation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (LvlEditorBehavior.EditModeActivated == false)
-        {
+        
             if (MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner != null)
             {
                 if (this.gameObject != MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner)
@@ -37,13 +36,12 @@ public class Desactivation : MonoBehaviour {
 
             }
 
-        }
+        
 	}
 		
 
 	void OnTriggerStay(Collider other) {
-        if (LvlEditorBehavior.EditModeActivated == false)
-        {
+        
             if (MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner != null)
             {
                 if (this.gameObject == MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner)
@@ -56,6 +54,6 @@ public class Desactivation : MonoBehaviour {
                     }
                 }
             }
-        }
+        
 	}
 }

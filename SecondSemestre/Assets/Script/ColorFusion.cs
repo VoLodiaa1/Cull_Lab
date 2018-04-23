@@ -55,34 +55,37 @@ public class ColorFusion : MonoBehaviour {
 		
 	}
 
-   /* private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.transform.name == "seringe" && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
+        if (LvlEditorBehavior.EditModeActivated == false)
         {
-            print("fusion");
-            int colorID = Merge(CurrentColor, other.transform.GetComponent<Seringe>().ValeurCouleur);
-
-            if (colorID != -1)
+            if (other.transform.name.Contains("seringe") && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
             {
-                Color ColorToGo = colors[colorID];
-                Color ActualColor = colors[CurrentColor];
-                GameObject parent = other.gameObject.transform.parent.gameObject;
+                print("fusion");
+                int colorID = Merge(CurrentColor, other.transform.GetComponent<Seringe>().ValeurCouleur);
 
-                if (ColorToGo != GetComponent<Renderer>().material.color)
+                if (colorID != -1)
                 {
+                    Color ColorToGo = colors[colorID];
+                    Color ActualColor = colors[CurrentColor];
+                    GameObject parent = other.gameObject.transform.parent.gameObject;
 
-                    GetComponent<Renderer>().material.color = Color.Lerp(GetComponent<Renderer>().material.color, ColorToGo, 0.1f);
-                    print("coloring");
-                }
-                else
-                {
-                    CurrentColor = colorID;
-                    parent.GetComponent<UseGravity>().injecteurDone = true;
-                    parent.GetComponent<BoxCollider>().enabled = false;
-                    other.GetComponent<BoxCollider>().enabled = false;
+                    if (ColorToGo != GetComponent<Renderer>().material.color)
+                    {
+
+                        GetComponent<Renderer>().material.color = Color.Lerp(GetComponent<Renderer>().material.color, ColorToGo, 0.1f);
+                        print("coloring");
+                    }
+                    else
+                    {
+                        CurrentColor = colorID;
+                        parent.GetComponent<UseGravity>().injecteurDone = true;
+                        parent.GetComponent<BoxCollider>().enabled = false;
+                        other.GetComponent<BoxCollider>().enabled = false;
+                    }
                 }
             }
         }
-    }*/
+    }
 
 }

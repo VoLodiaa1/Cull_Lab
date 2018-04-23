@@ -8,9 +8,14 @@ public class LvlEditorBehavior : MonoBehaviour {
     public static bool EditModeActivated = false;
     public Text TextEdit;
     public List<GameObject> LvlEditorButtons;
-    public static Color InjecteurColor;
+    public static Color InjecteurColor = Color.cyan;
+
+    public static bool TrashMode = false;
+    public Text TextTrash;
+    public 
 	// Use this for initialization
 	void Start () {
+        TextTrash.text = "Destruction Désactivé";
         EditModeActivated = false;
         TextEdit.text = "Edit Désactivé";
         foreach (var item in LvlEditorButtons)
@@ -31,18 +36,18 @@ public class LvlEditorBehavior : MonoBehaviour {
         
         if(obj.name == "Injecteur")
         {
-            instObj.GetComponent<Material>().color = InjecteurColor;
+            instObj.GetComponent<Renderer>().material.color = InjecteurColor;
+            Debug.Log(InjecteurColor);
         }
-        if(instObj.GetComponent<MeshRenderer>().enabled == false)
-        {
-            instObj.GetComponent<MeshRenderer>().enabled = true;
-        }
+        
+        
     }
 
     public void EditMode()
     {
         if(EditModeActivated == true)
         {
+            TrashMode = false;
             EditModeActivated = false;
             TextEdit.text = "Edit Désactivé";
             foreach (var item in LvlEditorButtons)
@@ -53,6 +58,7 @@ public class LvlEditorBehavior : MonoBehaviour {
         }
         else
         {
+            
             EditModeActivated = true;
             TextEdit.text = "Edit Activé";
             foreach (var item in LvlEditorButtons)
@@ -70,13 +76,30 @@ public class LvlEditorBehavior : MonoBehaviour {
             InjecteurColor = Color.cyan;
             Debug.Log("cyan");
         }
-        if (InjectColor == "cagenta")
+        if (InjectColor == "magenta")
         {
             InjecteurColor = Color.magenta;
         }
         if (InjectColor == "yellow")
         {
             InjecteurColor = Color.yellow;
+        }
+    }
+
+    public void Trash()
+    {
+        if (TrashMode == true)
+        {
+            TrashMode = false;
+            TextTrash.text = "Destruction Désactivé";
+            
+
+        }
+        else
+        {
+            TrashMode = true;
+            TextTrash.text = "Destruction Activé";
+            
         }
     }
 }

@@ -17,12 +17,16 @@ public class VictoryEditorBehavior : MonoBehaviour {
             gameObject.tag = "ObjectInScene";
             ColliderGame.enabled = true;
             ColliderEditor.enabled = false;
+            
+                GetComponent<MeshRenderer>().enabled = false;
+            
         }
         else
         {
             gameObject.tag = "ObjetBougeable";
             ColliderGame.enabled = false;
             ColliderEditor.enabled = true;
+            GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }

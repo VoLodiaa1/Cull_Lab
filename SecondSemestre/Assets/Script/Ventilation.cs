@@ -36,7 +36,7 @@ public class Ventilation : MonoBehaviour {
             {
                 if (Masalle.GetComponent<PositionnementObjet>().ObjectController == false && Masalle.GetComponent<RotationSalle>().RotationToMakeY == 0)
                 {
-                    if (Hit.transform.name == "Avatar")
+                    if (Hit.transform.name.Contains( "Avatar"))
                     {
                         Rigidbody rb = Hit.transform.GetComponent<Rigidbody>();
                         rb.AddForce(this.transform.forward * 10);

@@ -108,89 +108,78 @@ public class PositionnementObjet : MonoBehaviour {
 
 		RaycastHit hit;
 		Ray ray	= MyCamera.ScreenPointToRay (Input.mousePosition);
-		if (Physics.Raycast (ray, out hit)) {
-            if (hit.transform.tag == "ObjetBougeable" && ObjectController == false && oneframe == false)
-            {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    if (ModeRotation == false) {
+        if (Physics.Raycast(ray, out hit)) {
+            if(LvlEditorBehavior.TrashMode == false) { 
+            if (hit.transform.tag == "ObjetBougeable" && ObjectController == false && oneframe == false) {
+                if (Input.GetKeyDown(KeyCode.Mouse0)) {
+
+                    /*if (ModeRotation == false) {*/
                     print("bugpas");
                     ObjectSelectionner = hit.transform.gameObject;
                     ObjectSelectionner.GetComponent<Desactivation>().valeurmvt = 0;
-                    if (ObjectSelectionner.GetComponent<Rigidbody>() != null)
-                    {
+                    if (ObjectSelectionner.GetComponent<Rigidbody>() != null) {
                         rb = ObjectSelectionner.GetComponent<Rigidbody>();
-                        }
-                        if (rb.velocity.magnitude == 0)
-                        {
+                        //}
+                        if (rb.velocity.magnitude == 0) {
                             PositionY = ObjectSelectionner.transform.position.y;
                             PositionObject = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z);
                             ObjectSelectionner.layer = 2;
                             //Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
                             ObjectController = true;
                             print("pute");
-                        }
-                        else
-                        {
+                        } else {
                             ObjectSelectionner = null;
                             rb = null;
                         }
                     }
                 }
-                if (LvlEditorBehavior.EditModeActivated == true)
-                {
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
-                    {
-                        ObjectSelectionner = hit.transform.gameObject;
-                        //Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
-                        if (ObjectSelectionner.GetComponent<Rigidbody>() != null)
-                        {
-                            rb = ObjectSelectionner.GetComponent<Rigidbody>();
-                            rb.useGravity = false;
-                        }
-                        if (rb.velocity.magnitude == 0)
-                        {
-                            ObjectSelectionner.layer = 8;
-                            ImageRotation.transform.tag = "Untagged";
 
-                            ObjectController = true;
-                            ModeRotation = true;
-                            RotationDone = true;
-                            oneframe = true;
-                        }
-                        else
-                        {
-                            ObjectSelectionner.layer = 0;
-                            ImageRotation.transform.tag = "Untagged";
-                            ObjectSelectionner = null;
-                            ObjectController = false;
-                            ModeRotation = false;
-                            RotationDone = false;
-                            oneframe = true;
-                            // Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
-                        }
-                    }
-                }
+                /*if (Input.GetKeyDown (KeyCode.Mouse1) ) {
+					ObjectSelectionner = hit.transform.gameObject;
+					Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
+					if (ObjectSelectionner.GetComponent<Rigidbody> () != null) {
+						rb = ObjectSelectionner.GetComponent<Rigidbody> ();
+						rb.useGravity = false;
+					}
+					if (rb.velocity.magnitude == 0) {
+						ObjectSelectionner.layer = 8;
+						ImageRotation.transform.tag = "Untagged";
 
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    if (hit.transform.name == "Yaw" && oneframe == false)
-                    {
-                        RotationToMakeObjectY -= 90;
-                        oneframe = true;
-                    }
-                    if (hit.transform.name == "Roll" && oneframe == false)
-                    {
-                        RotationToMakeObjectX += 90;
-                        oneframe = true;
-                    }
-                    if (hit.transform.name == "Pitch" && oneframe == false)
-                    {
-                        RotationToMakeObjectZ += 90;
-                        oneframe = true;
-                    }
-                }
+						ObjectController = true;
+						ModeRotation = true;
+						RotationDone = true;
+						oneframe = true;
+					} else {
+						ObjectSelectionner.layer = 0;
+						ImageRotation.transform.tag = "Untagged";
+						ObjectSelectionner = null;
+						ObjectController = false;
+						ModeRotation = false;
+						RotationDone = false;
+						oneframe = true;
+						Basematerial = ObjectSelectionner.GetComponent<Renderer> ().material;
+					}
+				}*/
             }
+        }
+            else if(hit.transform.tag == "ObjetBougeable" && Input.GetMouseButtonDown(0))
+            {
+                Destroy(hit.transform.gameObject);
+            }
+			/*if (Input.GetKeyDown (KeyCode.Mouse0)) {
+				if (hit.transform.name == "Yaw" && oneframe == false) {
+					RotationToMakeObjectY -= 90;
+					oneframe = true;
+				}
+				if (hit.transform.name == "Roll"&& oneframe == false) {
+					RotationToMakeObjectX += 90;
+					oneframe = true;
+				}
+				if (hit.transform.name == "Pitch"&& oneframe == false) {
+					RotationToMakeObjectZ += 90;
+					oneframe = true;
+				}
+			}*/
 		}
 
 		if (Input.GetKeyUp (KeyCode.Mouse0) && ObjectSelectionner != null) {
@@ -215,25 +204,21 @@ public class PositionnementObjet : MonoBehaviour {
 			}
 		}
 
-        if (LvlEditorBehavior.EditModeActivated == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse1) && ModeRotation == true && RotationDone == false && oneframe == false)
-            {
-                if (RotationToMakeObjectX == 0 && RotationToMakeObjectY == 0 && RotationToMakeObjectZ == 0)
-                {
-                    print("oui");
-                    ObjectSelectionner.layer = 0;
-                    ObjectSelectionner = null;
-                    rb.useGravity = true;
-                    rb = null;
-                    ObjectController = false;
-                    oneframe = true;
-                    ModeRotation = false;
-                }
-            }
-        }
 
-            if (ObjectController == true && oneframe == false /*&& ModeRotation == false*/) {
+		/*if (Input.GetKeyDown (KeyCode.Mouse1) && ModeRotation == true && RotationDone == false && oneframe == false) {
+			if (RotationToMakeObjectX == 0 && RotationToMakeObjectY == 0 && RotationToMakeObjectZ == 0) {
+				print ("oui");
+				ObjectSelectionner.layer = 0;
+				ObjectSelectionner = null;
+				rb.useGravity = true;
+				rb = null;
+				ObjectController = false;
+				oneframe = true;
+				ModeRotation = false;
+			}
+		}*/
+
+		if (ObjectController == true && oneframe == false && ObjectSelectionner != null /*&& ModeRotation == false*/) {
 			ApparitionObjet ();
 		}
 
@@ -255,6 +240,7 @@ public class PositionnementObjet : MonoBehaviour {
 
 
 	void ApparitionObjet () {
+
 		ObjectSelectionner.GetComponent<SphereCollider> ().enabled = true; 
 		ObjectSelectionner.GetComponent<BoxCollider> ().enabled = false;
 
@@ -271,7 +257,8 @@ public class PositionnementObjet : MonoBehaviour {
 				ObjectSelectionner.transform.position = new Vector3 (hit.transform.position.x, PositionY, hit.transform.position.z);
 			}
 			if (hit.transform.tag == "ObjetBougeable" && hit.transform.gameObject != ObjectSelectionner.transform.gameObject || hit.transform.tag == "ObjectInScene" && hit.transform.gameObject != ObjectSelectionner.transform.gameObject) {
-				if (impossiblePosition == true) {
+                
+                if (impossiblePosition == true) {
 					print ("remonter 1");
 					monter += 1;
 				}
