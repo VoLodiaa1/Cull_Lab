@@ -8,9 +8,14 @@ public class UseGravity : MonoBehaviour {
     public GameObject masalle;
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
         masalle = GameObject.Find("Salle");
+<<<<<<< HEAD
     }
+=======
+
+        rb = GetComponent<Rigidbody>();
+	}
+>>>>>>> Dev
 	
 	// Update is called once per frame
 	void Update () {

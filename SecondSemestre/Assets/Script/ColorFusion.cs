@@ -57,7 +57,7 @@ public class ColorFusion : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.name == "seringe" && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
+        if (other.transform.name.Contains ("seringe") && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
         {
             print("fusion");
             int colorID = Merge(CurrentColor, other.transform.GetComponent<Seringe>().ValeurCouleur);

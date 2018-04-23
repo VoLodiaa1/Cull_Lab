@@ -28,8 +28,26 @@ public class RotationSalle : MonoBehaviour {
 			RotationToMakeY += 90;
 		}
 		if (RotationToMakeY != 0) {
+<<<<<<< HEAD
 			RotationHoraire();
 		}
+=======
+            if (Ventilateur != null)
+            {
+
+            Ventilateur.GetComponent<BoxCollider>().enabled = false;
+            }
+			RotationHoraire();
+        }
+        else
+        {
+            if (Ventilateur != null)
+            {
+
+            Ventilateur.GetComponent<BoxCollider>().enabled = true;
+            }
+        }
+>>>>>>> Dev
 		
 	}
 
@@ -38,8 +56,18 @@ public class RotationSalle : MonoBehaviour {
 		if (RotationToMakeY > 0) {
 			float depassementY;
 			depassementY = RotationToMakeY;
+<<<<<<< HEAD
 			transform.Rotate (0, -VitesseRotationSalle, 0,Space.World);
 			RotationToMakeY -= VitesseRotationSalle;
+=======
+            PivotCamera.transform.Rotate(0, -VitesseRotationSalle, 0, Space.World);
+            if (Ventilateur != null)
+            {
+            Ventilateur.transform.Rotate(0, -VitesseRotationSalle, 0, Space.World);
+            }
+        
+            RotationToMakeY -= VitesseRotationSalle;
+>>>>>>> Dev
 			if (depassementY < 0) {
 				RotationToMakeY += depassementY;
 			}
@@ -48,8 +76,18 @@ public class RotationSalle : MonoBehaviour {
 		if (RotationToMakeY < 0) {
 			float depassementY ;
 			depassementY = RotationToMakeY;
+<<<<<<< HEAD
 			transform.Rotate (0, VitesseRotationSalle, 0,Space.World);
 			RotationToMakeY += VitesseRotationSalle;
+=======
+            PivotCamera.transform.Rotate (0, VitesseRotationSalle, 0,Space.World);
+            if (Ventilateur != null)
+            {
+
+            Ventilateur.transform.Rotate(0, VitesseRotationSalle, 0, Space.World);
+            }
+            RotationToMakeY += VitesseRotationSalle;
+>>>>>>> Dev
 			if (depassementY > 0) {
 				RotationToMakeY -= depassementY;
 			}

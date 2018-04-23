@@ -5,8 +5,10 @@ using UnityEngine;
 public class AnimFan : MonoBehaviour {
 
 public ParticleSystem Wind;
+public GameObject ParticuleHolder;
 public int StartOrientation;
 public int SalleOrientation;
+<<<<<<< HEAD
 <<<<<<< HEAD
 private int previous, next;
 public bool OnOff;
@@ -14,19 +16,29 @@ private bool isOn;
 =======
 public int previous;
 public bool OnOff;
+=======
+public int previous;
+public bool OnOff;
+>>>>>>> Dev
 private bool isOn, EndTransision;
 public float ParticuleRotattion;
 
 public GlobalOrientation Script;
 
+<<<<<<< HEAD
 >>>>>>> IntegrationAssetsHugo
+=======
+>>>>>>> Dev
 SkinnedMeshRenderer skin;
 	// Use this for initialization
 	void Start () {
 		skin=GetComponent<SkinnedMeshRenderer>();
+		ParticuleStartOrientation();
+		Wind.Pause();
 	}
 	IEnumerator On(int BlendShape)
 	{
+<<<<<<< HEAD
 <<<<<<< HEAD
 		for(float i = 0f;i<100f; i=Time.deltaTime )
 		{
@@ -36,6 +48,11 @@ SkinnedMeshRenderer skin;
 		previous =BlendShape;
 
 
+=======
+		previous =BlendShape;
+
+
+>>>>>>> Dev
 		for(float i = 0f;i<102f; i+=2f)
 		{
 			if(i==80)
@@ -44,6 +61,7 @@ SkinnedMeshRenderer skin;
 			
 		//	Wind.Play();
 		//	print("salope");
+<<<<<<< HEAD
 		}
 
 			skin.SetBlendShapeWeight(BlendShape,i);
@@ -58,21 +76,90 @@ SkinnedMeshRenderer skin;
 			skin.SetBlendShapeWeight(BlendShape,i);
 			yield return null;
 >>>>>>> IntegrationAssetsHugo
+=======
+>>>>>>> Dev
 		}
-		yield return null;
-		
+
+			skin.SetBlendShapeWeight(BlendShape,i);
+			yield return null;		
+		}			
 	}
 <<<<<<< HEAD
 	
+<<<<<<< HEAD
 		IEnumerator Off()
 =======
+=======
+		IEnumerator Off(int BlendShape)
+		{			
+			for(float i = 100f;i>-2f; i-=2f)
+		{
+			skin.SetBlendShapeWeight(BlendShape,i);
+			yield return null;
+		}
+	}
+>>>>>>> Dev
 
 
 
 	void ParticuleStartOrientation()
+<<<<<<< HEAD
 >>>>>>> IntegrationAssetsHugo
+=======
+>>>>>>> Dev
 	{
-		yield return null;
+		if(StartOrientation ==0)
+		{
+			ParticuleRotattion =90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(StartOrientation ==1)
+		{
+			ParticuleRotattion =180f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(StartOrientation ==2)
+		{
+			ParticuleRotattion =-90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(StartOrientation ==3)
+		{
+			ParticuleRotattion =0f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+	}
+
+void ParticuleOrientation()
+	{
+		if(SalleOrientation ==0)
+		{
+			ParticuleRotattion =90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==1)
+		{
+			ParticuleRotattion =180f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==2)
+		{
+			ParticuleRotattion =-90f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
+		else if(SalleOrientation ==3)
+		{
+			ParticuleRotattion =0f;
+			if(ParticuleHolder.transform.localEulerAngles.y!=ParticuleRotattion)
+			ParticuleHolder.transform.localEulerAngles =new Vector3(0f,ParticuleRotattion,0f);
+		}
 	}
 <<<<<<< HEAD
 =======
@@ -111,16 +198,43 @@ void ParticuleOrientation()
 	void Update () {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if(SalleOrientation<3)
+=======
+		SalleOrientation =Script.CurrentOrientation;
+		
+	
+
+	
+		//Lance l'anim
+
+		if(OnOff && !isOn)
+>>>>>>> Dev
 		{
-			previous =SalleOrientation;
-			next =SalleOrientation+1;
+			StartCoroutine(On(SalleOrientation));
+			isOn=true;
+		//Arret pour drag n drop	
 		}
-		else if(SalleOrientation==3)
+		if (!OnOff && isOn){
+			StartCoroutine(Off(SalleOrientation));
+			isOn=false;
+
+		}
+		//tansition quand on tourner la salle
+		if(previous!=SalleOrientation && !EndTransision)
 		{
-			previous =3;
-			next=0;
+			StartCoroutine(Off(previous));
+
+			if(!Wind.isStopped)
+			{
+			Wind.Stop();
+			}
+
+			StartCoroutine(On(SalleOrientation));
+			EndTransision =true;
+
 		}
+<<<<<<< HEAD
 =======
 		SalleOrientation =Script.CurrentOrientation;
 		
@@ -171,6 +285,21 @@ void ParticuleOrientation()
 
 	
 >>>>>>> IntegrationAssetsHugo
+=======
+		else{
+			EndTransision=false;
+
+			if(!Wind.isPlaying)
+			{
+			new	WaitForSeconds(1f);
+			ParticuleOrientation();
+			Wind.Play();
+			}
+
+		}
+
+	
+>>>>>>> Dev
 		
 	}
 }

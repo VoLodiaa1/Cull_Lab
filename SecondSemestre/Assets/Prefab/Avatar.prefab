@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114139594704748504}
   - component: {fileID: 114793025643423954}
   - component: {fileID: 114771805030553932}
+  - component: {fileID: 114204331607415010}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: ObjectInScene
@@ -129,6 +130,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaSalle: {fileID: 0}
   valeurmvt: 0
+--- !u!114 &114204331607415010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885623086975588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851417ef1f6c1db4ba031a808f446d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentColor: 0
+  ColorLerped: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114298349120374672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masalle: {fileID: 0}
+  injecteurDone: 0
 --- !u!135 &135777487977959054
 SphereCollider:
   m_ObjectHideFlags: 1
