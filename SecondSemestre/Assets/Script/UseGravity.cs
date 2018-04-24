@@ -17,32 +17,28 @@ public class UseGravity : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+	{
 
-        RaycastHit Hit;
+		if (RotationEditor.ModeRotation == true) {
+			rb.useGravity = false;
+		} else {
 
-        if (injecteurDone == false)
-        {
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out Hit, 0.501f))
-            {
-                rb.useGravity = false;
-            }
-            else
-            {
-                if (masalle.GetComponent<PositionnementObjet>().ObjectSelectionner == this.gameObject)
-                {
-                    rb.useGravity = false;
-                }
-                else
-                {
-                    rb.useGravity = true;
-                }
+			RaycastHit Hit;
 
-            }
-        }
-        else
-        {
-            rb.useGravity = true;
-        }
-    }
+			if (injecteurDone == false) {
+				if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.down), out Hit, 0.501f)) {
+					rb.useGravity = false;
+				} else {
+					if (masalle.GetComponent<PositionnementObjet> ().ObjectSelectionner == this.gameObject) {
+						rb.useGravity = false;
+					} else {
+						rb.useGravity = true;
+					}
+
+				}
+			} else {
+				rb.useGravity = true;
+			}
+		}
+	}
 }

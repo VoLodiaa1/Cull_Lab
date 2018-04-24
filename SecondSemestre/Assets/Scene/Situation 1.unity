@@ -7902,6 +7902,7 @@ GameObject:
   - component: {fileID: 312942887}
   - component: {fileID: 312942886}
   - component: {fileID: 312942894}
+  - component: {fileID: 312942895}
   m_Layer: 0
   m_Name: Base
   m_TagString: ObjetBougeable
@@ -8043,6 +8044,20 @@ MonoBehaviour:
   s: 0
   v: 0
   numeroSeringe: 2
+  ValeurCouleur: 0
+--- !u!114 &312942895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 312942885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da4a9fe5da42b64fa03eee163d7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masalle: {fileID: 0}
+  injecteurDone: 0
 --- !u!1 &314720509
 GameObject:
   m_ObjectHideFlags: 0
@@ -10608,6 +10623,7 @@ GameObject:
   - component: {fileID: 418134948}
   - component: {fileID: 418134947}
   - component: {fileID: 418134951}
+  - component: {fileID: 418134952}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10690,6 +10706,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumeroScene: 1
+--- !u!114 &418134952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418134946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1bb581faa10c644b91d49deafb8f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyCamera: {fileID: 418134949}
+  VitesseRotationObject: 10
 --- !u!1 &421333331
 GameObject:
   m_ObjectHideFlags: 0
@@ -17128,6 +17157,7 @@ GameObject:
   - component: {fileID: 699354305}
   - component: {fileID: 699354304}
   - component: {fileID: 699354306}
+  - component: {fileID: 699354307}
   m_Layer: 0
   m_Name: Sponge
   m_TagString: ObjetBougeable
@@ -17274,6 +17304,19 @@ MonoBehaviour:
   Spourcent: 0
   Vpourcent: 0
   premierepenetration: 1
+--- !u!114 &699354307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 699354297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da4a9fe5da42b64fa03eee163d7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masalle: {fileID: 0}
+  injecteurDone: 0
 --- !u!1 &700946306
 GameObject:
   m_ObjectHideFlags: 0
@@ -37782,6 +37825,7 @@ GameObject:
   - component: {fileID: 1607616687}
   - component: {fileID: 1607616686}
   - component: {fileID: 1607616694}
+  - component: {fileID: 1607616695}
   m_Layer: 0
   m_Name: Base
   m_TagString: ObjetBougeable
@@ -37923,6 +37967,20 @@ MonoBehaviour:
   s: 0
   v: 0
   numeroSeringe: 1
+  ValeurCouleur: 0
+--- !u!114 &1607616695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1607616685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da4a9fe5da42b64fa03eee163d7454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masalle: {fileID: 0}
+  injecteurDone: 0
 --- !u!1 &1614587261
 GameObject:
   m_ObjectHideFlags: 0
@@ -40609,6 +40667,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1607616685}
   - {fileID: 312942885}
+  PositionY: 0.5
   ObjectController: 0
   ModeRotation: 0
   oneframe: 0

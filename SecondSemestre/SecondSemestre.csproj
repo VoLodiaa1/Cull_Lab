@@ -294,6 +294,7 @@
     <Compile Include="Assets\LvlEditorBehavior.cs" />
     <Compile Include="Assets\ObjectContainer.cs" />
     <Compile Include="Assets\ObjectSaver.cs" />
+    <Compile Include="Assets\RotationEditor.cs" />
     <Compile Include="Assets\Script\CollisionVictoire.cs" />
     <Compile Include="Assets\Script\ColorationCase.cs" />
     <Compile Include="Assets\Script\ColorFusion.cs" />

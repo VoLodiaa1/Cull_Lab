@@ -115,7 +115,7 @@ public class PositionnementObjet : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             if(LvlEditorBehavior.TrashMode == false) { 
             if (hit.transform.tag == "ObjetBougeable" && ObjectController == false && oneframe == false) {
-                if (Input.GetKeyDown(KeyCode.Mouse0)) {
+					if (Input.GetKeyDown(KeyCode.Mouse0) && RotationEditor.ModeRotation == false) {
 
                     /*if (ModeRotation == false) {*/
                     print("bugpas");

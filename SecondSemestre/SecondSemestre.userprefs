@@ -1,19 +1,21 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\RotationSalle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\RotationEditor.cs">
     <Files>
-      <File FileName="Assets\Script\PositionnementObjet.cs" Line="3" Column="19" />
+      <File FileName="Assets\Script\PositionnementObjet.cs" Line="249" Column="67" />
+      <File FileName="Assets\RotationEditor.cs" Line="46" Column="5" />
       <File FileName="Assets\Script\RotationSalle.cs" Line="7" Column="19" />
       <File FileName="Assets\Script\DestructionImageRotation.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\PenetrationSol.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\ColorationCase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Desactivation.cs" Line="3" Column="19" />
+      <File FileName="Assets\Script\Desactivation.cs" Line="22" Column="18" />
       <File FileName="Assets\Script\Sponge.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Seringe.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\ResetDeScene.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Ventilation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\CollisionVictoire.cs" Line="3" Column="19" />
-      <File FileName="Assets\Script\UseGravity.cs" Line="14" Column="3" />
+      <File FileName="Assets\Script\CollisionVictoire.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\UseGravity.cs" Line="22" Column="36" />
+      <File FileName="Assets\Scripts\Serialization\Surrogates\Texture2DSurrogate.cs" Line="10" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
