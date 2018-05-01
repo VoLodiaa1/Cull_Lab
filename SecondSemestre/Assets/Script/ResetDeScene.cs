@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ResetDeScene : MonoBehaviour {
 
-	public int NumeroScene;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,8 @@ public class ResetDeScene : MonoBehaviour {
 		
 	}
 
-	public void Reset () {
-		SceneManager.LoadScene (NumeroScene);
+	public void Reset (string NomScene) {
+		SceneManager.LoadScene (NomScene);
 	}
 
 	public void Scene1() {

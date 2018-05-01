@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondSemestre", "SecondSemestre.csproj", "{B3CA746E-0D07-CCEA-F9D8-7FD457588724}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondSemestre.Editor", "SecondSemestre.Editor.csproj", "{78AF6054-B9F7-8F6A-D680-0D3803ABD2CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B3CA746E-0D07-CCEA-F9D8-7FD457588724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3CA746E-0D07-CCEA-F9D8-7FD457588724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3CA746E-0D07-CCEA-F9D8-7FD457588724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78AF6054-B9F7-8F6A-D680-0D3803ABD2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AF6054-B9F7-8F6A-D680-0D3803ABD2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AF6054-B9F7-8F6A-D680-0D3803ABD2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AF6054-B9F7-8F6A-D680-0D3803ABD2CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

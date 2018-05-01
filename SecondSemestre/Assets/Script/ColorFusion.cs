@@ -8,9 +8,12 @@ public class ColorFusion : MonoBehaviour {
     GameObject Masalle;
     public int CurrentColor =0;
     public Color ColorLerped = Color.white;
+    float ColorModifcation;
+    public float VitesseDeFusion;
+    public int colorID;
 
-        // Les couleurs possibles dans votre jeux, avec les couleurs primaires, secondaires, etc.
-        Color[] colors = new Color[] {
+    // Les couleurs possibles dans votre jeux, avec les couleurs primaires, secondaires, etc.
+    Color[] colors = new Color[] {
         Color.white,
         Color.cyan,
         Color.magenta,
@@ -57,32 +60,30 @@ public class ColorFusion : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (LvlEditorBehavior.EditModeActivated == false)
+        if (other.transform.name.Contains ("seringe") && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
         {
-            if (other.transform.name.Contains("seringe") && Masalle.GetComponent<PositionnementObjet>().ObjectController == false)
+            print("fusion");
+            colorID = Merge(CurrentColor, other.transform.parent.GetComponent<Seringe>().ValeurCouleur);
+
+            if (colorID != -1)
             {
-                print("fusion");
-                int colorID = Merge(CurrentColor, other.transform.GetComponent<Seringe>().ValeurCouleur);
+                Color ColorToGo = colors[colorID];
+                Color ActualColor = colors[CurrentColor];
+                GameObject parent = other.gameObject.transform.parent.gameObject;
 
-                if (colorID != -1)
+                if (ColorToGo != GetComponent<Renderer>().material.color)
                 {
-                    Color ColorToGo = colors[colorID];
-                    Color ActualColor = colors[CurrentColor];
-                    GameObject parent = other.gameObject.transform.parent.gameObject;
-
-                    if (ColorToGo != GetComponent<Renderer>().material.color)
-                    {
-
-                        GetComponent<Renderer>().material.color = Color.Lerp(GetComponent<Renderer>().material.color, ColorToGo, 0.1f);
-                        print("coloring");
-                    }
-                    else
-                    {
-                        CurrentColor = colorID;
-                        parent.GetComponent<UseGravity>().injecteurDone = true;
-                        parent.GetComponent<BoxCollider>().enabled = false;
-                        other.GetComponent<BoxCollider>().enabled = false;
-                    }
+                    ColorModifcation += Time.deltaTime;
+                    GetComponent<Renderer>().material.color = Color.Lerp(ActualColor, ColorToGo, ColorModifcation *VitesseDeFusion);
+                    print("coloring");
+                }
+                else
+                {
+                    CurrentColor = colorID;
+                    ColorModifcation = 0;
+                    parent.GetComponent<UseGravity>().injecteurDone = true;
+                    parent.GetComponent<BoxCollider>().enabled = false;
+                    other.GetComponent<BoxCollider>().enabled = false;
                 }
             }
         }

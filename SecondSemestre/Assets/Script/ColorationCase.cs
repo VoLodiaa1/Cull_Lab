@@ -11,16 +11,18 @@ public class ColorationCase : MonoBehaviour {
 	int positionY;
 	int positionZ;
 	int TotalePosition;
+    public Color ColorOfTile = Color.white;
 
     
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        MaSalle = GameObject.Find("Salle");
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		TotalePosition = positionX + positionY + positionZ;
 
 		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
@@ -56,10 +58,18 @@ public class ColorationCase : MonoBehaviour {
 				}
 			}
 		} else {
-			GetComponent<Renderer> ().material.color = Color.white;
+			GetComponent<Renderer> ().material.color = ColorOfTile;
 		}
 
 
 		
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name.Contains("ConditionDeVictoire"))
+        {
+            ColorOfTile = collision.gameObject.GetComponent<VictoryEditorBehavior>().ColorVictory;
+        }
+    }
 }

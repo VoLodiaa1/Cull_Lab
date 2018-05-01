@@ -15,45 +15,35 @@ public class Desactivation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        
-            if (MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner != null)
-            {
-                if (this.gameObject != MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner)
-                {
-                }
 
-                if (PositionObject != MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner.transform.position)
-                {
-                    print("positionpossible");
-                    MaSalle.GetComponent<PositionnementObjet>().impossiblePosition = false;
-                    valeurmvt += 1;
+		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
+			if (this.gameObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
+			}
 
-                    PositionObject = MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner.transform.position;
-                }
-            }
-            else
-            {
+			if (PositionObject != MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position ) {
+				print ("positionpossible");
+				MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = false;
+				valeurmvt += 1;
 
-            }
+				PositionObject = MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner.transform.position;
+			}
+		} else {
+			
+		}
 
-        
+	
 	}
 		
 
 	void OnTriggerStay(Collider other) {
-        
-            if (MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner != null)
-            {
-                if (this.gameObject == MaSalle.GetComponent<PositionnementObjet>().ObjectSelectionner)
-                {
-                    if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe" && this.transform.name != "base"
-                        || other.transform.tag == "ObjectInScene" && other.transform.name != "seringe" && this.transform.name != "base")
-                    {
-                        print("Enfoncer");
-                        MaSalle.GetComponent<PositionnementObjet>().impossiblePosition = true;
-                    }
-                }
-            }
-        
+		if (MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner != null) {
+			if (this.gameObject == MaSalle.GetComponent<PositionnementObjet> ().ObjectSelectionner) {
+				if (other.transform.tag == "ObjetBougeable" && other.transform.name != "seringe" && this.transform.name != "base"
+                    || other.transform.tag == "ObjectInScene" && other.transform.name != "seringe" && this.transform.name != "base") {
+					print ("Enfoncer");
+					MaSalle.GetComponent<PositionnementObjet> ().impossiblePosition = true;
+				}
+			}
+		}
 	}
 }

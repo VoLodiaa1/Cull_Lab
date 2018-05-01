@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Victoire: {fileID: 0}
+  ColorToHaveForWin: 0
 --- !u!114 &114913114640665108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ColliderGame: {fileID: 65490291123803930}
   ColliderEditor: {fileID: 65487526682943814}
+  ColorVictory: {r: 0, g: 1, b: 1, a: 1}
 --- !u!135 &135926297486104834
 SphereCollider:
   m_ObjectHideFlags: 1
